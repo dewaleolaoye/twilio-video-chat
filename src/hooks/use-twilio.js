@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useReducer, useRef } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  useRef,
+  useEffect,
+} from 'react';
 import axios from 'axios';
 import { connect } from 'twilio-video';
 
@@ -44,7 +50,14 @@ export const wrapRootElement = ({ element }) => (
 const useTwilioVideo = () => {
   const [state, dispatch] = useContext(TwilioVideoContext);
 
-  const videoRef = useRef();
+  let videoRef = useRef();
+
+  // useEffect(() => {
+  //   videoRef = useRef(null);
+  //   return () => {
+  //     videoRef = null;
+  //   };
+  // }, []);
 
   const getRoomToken = async ({ identity, roomName }) => {
     const result = await axios.post(TWILIO_TOKEN_URL, {

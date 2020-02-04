@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react'
-import { Router } from '@reach/router'
-import Layout from '../components/layout'
-import VideoDisplay from '../components/video-display'
-import { navigate } from 'gatsby'
+import React, { useEffect } from 'react';
+import { Router } from '@reach/router';
+import Layout from '../components/layout';
+import VideoDisplay from '../components/video-display';
+import { navigate } from 'gatsby';
 
 const BounceToHome = () => {
   useEffect(() => {
-    navigate('/', { replace: true })
-  }, [])
+    navigate('/', { replace: true });
+  }, []);
 
-  return null
-}
+  return null;
+};
 
-export default () => (
+const Room = () => (
   <>
     <Layout>
       <Router>
@@ -21,4 +21,6 @@ export default () => (
       </Router>
     </Layout>
   </>
-)
+);
+
+export default Room;
