@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import useTwilioVideo from '../hooks/use-twilio'
-import { navigate } from 'gatsby'
+import React, { useEffect, useState } from 'react';
+import useTwilioVideo from '../hooks/use-twilio';
+import { navigate } from 'gatsby';
 
 const Join = ({ location }) => {
   const defaultRoom =
-    (location && location.state && location.state.roomName) || ''
-  const { state, getRoomToken } = useTwilioVideo()
-  const [identity, setIdentity] = useState('')
-  const [roomName, setRoomName] = useState(defaultRoom)
+    (location && location.state && location.state.roomName) || '';
+  const { state, getRoomToken } = useTwilioVideo();
+  const [identity, setIdentity] = useState('');
+  const [roomName, setRoomName] = useState(defaultRoom);
 
   useEffect(() => {
     if (state.token && state.roomName) {
-      navigate(`/room/${state.roomName}`)
+      navigate(`/room/${state.roomName}`);
     }
-  }, [state])
+  }, [state]);
 
   const handleSubmit = event => {
-    event.preventDefault()
+    event.preventDefault();
 
-    getRoomToken({ identity, roomName })
-  }
+    getRoomToken({ identity, roomName });
+  };
 
   return (
     <>
@@ -48,7 +48,7 @@ const Join = ({ location }) => {
         <button type="submit">Join Video Chat</button>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default Join
+export default Join;

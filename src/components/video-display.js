@@ -1,20 +1,25 @@
-import React, { useEffect } from 'react'
-import useTwilioVideo from '../hooks/use-twilio'
-import { navigate } from 'gatsby'
+import React, { useEffect } from 'react';
+import useTwilioVideo from '../hooks/use-twilio';
+import { navigate } from 'gatsby';
 
 const VideoDisplay = ({ roomID }) => {
-  const { state } = useTwilioVideo('')
+  const { state, startVideo, videoRef } = useTwilioVideo();
 
   useEffect(() => {
     if (!state.token) {
-      navigate('/', { state: { roomName: roomID } })
+      navigate('/', { state: { roomName: roomID } });
     }
-  }, [state, roomID])
+
+    if (!state.romm) {
+      return startVideo();
+    }
+  }, [state, roomID, startVideo]);
   return (
     <>
       <h1>Room: {roomID}</h1>
+      <div className="chat" ref={videoRef}></div>
     </>
-  )
-}
+  );
+};
 
-export default VideoDisplay
+export default VideoDisplay;
