@@ -2,10 +2,7 @@ import React, { createContext, useContext, useReducer, useRef } from 'react';
 import axios from 'axios';
 import { connect } from 'twilio-video';
 
-// const TWILIO_TOKEN_URL =
-//   'https://scarlet-hippopotamus-3934.twil.io/create-room-token';
-
-// const TWILIO_TOKEN_URL = 'https://wheat-shark-5480.twil.io/aegle-video';
+// const TWILIO_TOKEN_URL = process.env.TWILIO_TOKEN_URL
 const TWILIO_TOKEN_URL = 'http://localhost:4000/video';
 const DEFAULT_STATE = {
   identity: false,
