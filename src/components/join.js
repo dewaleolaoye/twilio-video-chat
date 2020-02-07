@@ -5,20 +5,22 @@ import { navigate } from 'gatsby';
 const Join = ({ location }) => {
   const defaultRoom =
     (location && location.state && location.state.roomName) || '';
+  const defaultSession =
+    (location && location.state && location.state.sessionId) || null;
   const { state, getRoomToken } = useTwilioVideo();
   const [identity, setIdentity] = useState('');
   const [roomName, setRoomName] = useState(defaultRoom);
 
   useEffect(() => {
     if (state.token && state.roomName) {
-      navigate(`/room/${state.roomName}`);
+      navigate(`/room/${state.roomName}/${state.sessionId}`);
     }
   }, [state]);
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    getRoomToken({ identity, roomName });
+    getRoomToken({ identity, roomName, sessionId: defaultSession });
   };
 
   return (

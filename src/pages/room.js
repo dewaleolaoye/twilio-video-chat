@@ -16,7 +16,7 @@ const Room = () => (
   <>
     <Layout>
       <Router>
-        <VideoDisplay path="room/:roomID" />
+        <VideoDisplay path="room/:roomID/:sessionID" />
         <BounceToHome default />
       </Router>
     </Layout>
